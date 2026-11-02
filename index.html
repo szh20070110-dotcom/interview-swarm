@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校招面试看板 · 后端开发工程师 · 恒信数字科技</title>
+<style>
+  :root{
+    --bg:#060a12;
+    --bg-soft:#0a111d;
+    --panel:#0d1626;
+    --panel-2:#101c2f;
+    --line:rgba(148,163,184,.16);
+    --line-strong:rgba(148,163,184,.28);
+    --text:#e9eff8;
+    --muted:#93a4b8;
+    --teal:#2dd4bf;
+    --blue:#60a5fa;
+    --violet:#a78bfa;
+    --amber:#fbbf24;
+    --red:#f87171;
+    --green:#34d399;
+    --radius:14px;
+    --max:1180px;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 520px at 12% -8%, rgba(45,212,191,.10), transparent 60%),
+      radial-gradient(760px 460px at 92% 4%, rgba(96,165,250,.10), transparent 62%),
+      var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{
+    width:min(var(--max), calc(100% - 40px));
+    margin:0 auto;
+  }
+
+  .mono{
+    font-family:"SF Mono",Consolas,"Cascadia Mono",monospace;
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- header ---------- */
+
+  .hero{
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    padding:44px 0 30px;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(148,163,184,.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,163,184,.055) 1px, transparent 1px);
+    background-size:52px 52px;
+    mask-image:linear-gradient(180deg, rgba(0,0,0,.8), transparent 88%);
+    pointer-events:none;
+  }
+
+  .hero .wrap{position:relative;}
+
+  .eyebrow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+    margin-bottom:18px;
+  }
+
+  .chip{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:5px 11px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    color:var(--muted);
+    font-size:12px;
+    letter-spacing:.04em;
+    background:rgba(13,22,38,.6);
+  }
+
+  .chip .dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 10px var(--teal);
+  }
+
+  h1{
+    margin:0 0 10px;
+    font-size:clamp(30px, 4.4vw, 50px);
+    line-height:1.16;
+    letter-spacing:-.02em;
+    font-weight:750;
+  }
+
+  h1 .accent{
+    background:linear-gradient(92deg, var(--teal), var(--blue) 58%, var(--violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .lede{
+    max-width:760px;
+    margin:0;
+    color:var(--muted);
+    font-size:15.5px;
+  }
+
+  .kpis{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:12px;
+    margin-top:28px;
+  }
+
+  .kpi{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:linear-gradient(160deg, rgba(16,28,47,.92), rgba(10,17,29,.92));
+    padding:16px 18px;
+  }
+
+  .kpi b{
+    display:block;
+    font-size:26px;
+    line-height:1.2;
+    letter-spacing:-.02em;
+  }
+
+  .kpi span{
+    color:var(--muted);
+    font-size:12px;
+    letter-spacing:.06em;
+  }
+
+  /* ---------- nav ---------- */
+
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(6,10,18,.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+
+  .nav .wrap{
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    padding:10px 0;
+    scrollbar-width:none;
+  }
+
+  .nav .wrap::-webkit-scrollbar{display:none;}
+
+  .nav a{
+    flex:0 0 auto;
+    padding:7px 12px;
+    border-radius:8px;
+    color:var(--muted);
+    font-size:13px;
+    border:1px solid transparent;
+  }
+
+  .nav a:hover{
+    color:var(--text);
+    border-color:var(--line);
+    background:rgba(148,163,184,.06);
+  }
+
+  /* ---------- sections ---------- */
+
+  section{
+    padding:56px 0 8px;
+    scroll-margin-top:62px;
+  }
+
+  .sec-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+
+  .sec-head h2{
+    margin:0;
+    font-size:23px;
+    letter-spacing:-.01em;
+  }
+
+  .sec-head h2 .num{
+    color:var(--teal);
+    font-size:13px;
+    letter-spacing:.14em;
+    margin-right:10px;
+  }
+
+  .sec-head p{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  .panel{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:linear-gradient(180deg, rgba(16,28,47,.72), rgba(9,15,25,.72));
+    padding:22px;
+  }
+
+  .panel h3{
+    margin:0 0 6px;
+    font-size:15px;
+    letter-spacing:.01em;
+  }
+
+  .panel .sub{
+    color:var(--muted);
+    font-size:12.5px;
+    margin:0 0 16px;
+  }
+
+  /* ---------- profile ---------- */
+
+  .profile-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    gap:14px;
+  }
+
+  .role-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius);
+    border:1px solid rgba(45,212,191,.24);
+    background:
+      radial-gradient(520px 220px at 0% 0%, rgba(45,212,191,.13), transparent 62%),
+      linear-gradient(160deg, rgba(16,28,47,.95), rgba(9,15,25,.95));
+    padding:24px;
+  }
+
+  .role-card::after{
+    content:"";
+    position:absolute;
+    right:-50px;bottom:-70px;
+    width:210px;height:210px;
+    border-radius:50%;
+    border:1px solid rgba(45,212,191,.16);
+    box-shadow:0 0 0 28px rgba(45,212,191,.04), 0 0 0 58px rgba(45,212,191,.025);
+    pointer-events:none;
+  }
+
+  .role-card .tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:.12em;
+    color:var(--teal);
+    border:1px solid rgba(45,212,191,.34);
+    background:rgba(45,212,191,.08);
+    padding:3px 9px;
+    border-radius:6px;
+    margin-bottom:14px;
+  }
+
+  .role-card h3{
+    margin:0 0 6px;
+    font-size:27px;
+    letter-spacing:-.02em;
+  }
+
+  .role-card .where{
+    color:var(--muted);
+    font-size:13px;
+    margin:0 0 16px;
+  }
+
+  .role-card .one{
+    color:#c7d5e6;
+    font-size:14px;
+    margin:0 0 18px;
+    padding-left:12px;
+    border-left:2px solid var(--teal);
+  }
+
+  .facts{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:10px;
+  }
+
+  .facts div{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:9px 11px;
+    background:rgba(6,10,18,.4);
+  }
+
+  .facts span{display:block;color:var(--muted);font-size:11px;letter-spacing:.05em;}
+  .facts b{display:block;font-size:13px;margin-top:2px;font-weight:600;}
+
+  .duty-list{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:10px;
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+
+  .duty-list li{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:11px 13px;
+    background:rgba(10,17,29,.55);
+    font-size:13px;
+    color:#cbd8e7;
+  }
+
+  .duty-list li b{
+    display:block;
+    color:var(--teal);
+    font-size:11px;
+    letter-spacing:.1em;
+    margin-bottom:3px;
+    font-family:"SF Mono",Consolas,monospace;
+  }
+
+  .cap-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:14px;
+    margin-top:14px;
+  }
+
+  .cap{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:rgba(10,17,29,.6);
+    padding:18px;
+  }
+
+  .cap h4{
+    margin:0 0 12px;
+    font-size:13px;
+    letter-spacing:.08em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .cap h4::before{
+    content:"";
+    width:4px;height:14px;border-radius:2px;
+    background:var(--teal);
+  }
+
+  .cap.must h4::before{background:var(--blue);}
+  .cap.plus h4::before{background:var(--amber);}
+
+  .cap ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:8px;
+  }
+
+  .cap li{
+    display:flex;
+    gap:9px;
+    font-size:13px;
+    color:#cbd8e7;
+  }
+
+  .cap li::before{
+    content:"";
+    flex:0 0 6px;
+    height:6px;
+    margin-top:8px;
+    border-radius:50%;
+    background:var(--line-strong);
+  }
+
+  .cap.must li::before{background:var(--blue);opacity:.7;}
+  .cap.plus li::before{background:var(--amber);opacity:.8;}
+
+  .competency{
+    margin-top:14px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:rgba(10,17,29,.6);
+    padding:18px;
+  }
+
+  .layers{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    gap:10px;
+  }
+
+  .layer{
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px;
+    background:rgba(16,28,47,.5);
+  }
+
+  .layer b{
+    display:block;
+    font-size:12.5px;
+    margin-bottom:6px;
+  }
+
+  .layer span{
+    display:block;
+    color:var(--muted);
+    font-size:11.5px;
+    line-height:1.55;
+  }
+
+  /* ---------- scoring ---------- */
+
+  .score-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:14px;
+  }
+
+  .weight-row{
+    display:grid;
+    grid-template-columns:96px minmax(0,1fr) 46px;
+    gap:12px;
+    align-items:center;
+    padding:9px 0;
+    border-bottom:1px dashed rgba(148,163,184,.12);
+  }
+
+  .weight-row:last-child{border-bottom:0;}
+
+  .weight-row .name{font-size:13px;color:#d5e1ee;}
+
+  .bar{
+    height:8px;
+    border-radius:999px;
+    background:rgba(148,163,184,.10);
+    overflow:hidden;
+  }
+
+  .bar i{
+    display:block;
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--teal), var(--blue));
+  }
+
+  .weight-row .pct{
+    text-align:right;
+    font-size:12px;
+    color:var(--muted);
+    font-family:"SF Mono",Consolas,monospace;
+  }
+
+  .formula{
+    margin-top:16px;
+    border:1px solid rgba(45,212,191,.22);
+    border-radius:10px;
+    background:rgba(45,212,191,.05);
+    padding:12px 14px;
+    font-size:12.5px;
+    color:#bfe9e2;
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+
+  .grade-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:12.5px;
+  }
+
+  .grade-table th,
+  .grade-table td{
+    padding:8px 9px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+  }
+
+  .grade-table th{
+    color:var(--muted);
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:.06em;
+  }
+
+  .badge{
+    display:inline-block;
+    padding:2px 8px;
+    border-radius:999px;
+    font-size:11px;
+    border:1px solid currentColor;
+    line-height:1.6;
+  }
+
+  .badge.ok{color:var(--green);background:rgba(52,211,153,.08);}
+  .badge.wait{color:var(--amber);background:rgba(251,191,36,.08);}
+  .badge.no{color:var(--red);background:rgba(248,113,113,.08);}
+
+  /* ---------- radar ---------- */
+
+  .radar-grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:14px;
+  }
+
+  .radar-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:linear-gradient(170deg, rgba(16,28,47,.86), rgba(8,13,22,.9));
+    padding:18px 18px 12px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .radar-card.lead{border-color:rgba(45,212,191,.38);box-shadow:0 0 0 1px rgba(45,212,191,.08), 0 18px 50px -30px rgba(45,212,191,.5);}
+  .radar-card.mid{border-color:rgba(251,191,36,.26);}
+  .radar-card.low{border-color:rgba(248,113,113,.24);}
+
+  .radar-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:2px;
+  }
+
+  .radar-head h3{margin:0;font-size:16px;}
+
+  .radar-head .school{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:1px;
+  }
+
+  .radar-score{
+    text-align:right;
+    line-height:1.1;
+  }
+
+  .radar-score b{
+    display:block;
+    font-size:25px;
+    letter-spacing:-.03em;
+    font-family:"SF Mono",Consolas,monospace;
+  }
+
+  .radar-score span{
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:.08em;
+  }
+
+  .radar-card.lead .radar-score b{color:var(--teal);}
+  .radar-card.mid .radar-score b{color:var(--amber);}
+  .radar-card.low .radar-score b{color:var(--red);}
+
+  .radar-wrap{
+    position:relative;
+    flex:1;
+    min-height:270px;
+    margin:14px 0 4px;
+    padding:26px 30px;
+  }
+
+  .radar{
+    position:relative;
+    width:100%;
+    max-width:230px;
+    aspect-ratio:1;
+    margin:6px auto 0;
+  }
+
+  .grid{
+    position:absolute;
+    inset:0;
+    clip-path:polygon(50% 0%, 97.55% 34.55%, 79.39% 90.45%, 20.61% 90.45%, 2.45% 34.55%);
+    transform:scale(var(--s));
+  }
+
+  /* 交替填充，形成五边形同心环带 */
+  .grid.g1{--s:1;background:rgba(96,165,250,.10);}
+  .grid.g2{--s:.8;background:rgba(9,15,25,.92);}
+  .grid.g3{--s:.6;background:rgba(96,165,250,.075);}
+  .grid.g4{--s:.4;background:rgba(9,15,25,.92);}
+  .grid.g5{--s:.2;background:rgba(96,165,250,.055);}
+
+  .axis{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:1px;
+    height:50%;
+    transform-origin:bottom center;
+    background:rgba(148,163,184,.18);
+    transform:rotate(0deg);
+  }
+
+  .axis.a2{transform:rotate(72deg);}
+  .axis.a3{transform:rotate(144deg);}
+  .axis.a4{transform:rotate(216deg);}
+  .axis.a5{transform:rotate(288deg);}
+
+  .shape{
+    position:absolute;
+    inset:0;
+    opacity:.92;
+    clip-path:polygon(50% 4%, 91.84% 36.4%, 75.28% 84.99%, 22.37% 88.02%, 9.11% 36.71%);
+    background:linear-gradient(180deg, rgba(45,212,191,.34), rgba(45,212,191,.10));
+  }
+
+  .radar-card.mid .shape{
+    clip-path:polygon(50% 16%, 80.43% 40.11%, 71.75% 79.93%, 27.08% 81.55%, 15.76% 38.88%);
+    background:linear-gradient(180deg, rgba(251,191,36,.30), rgba(251,191,36,.08));
+  }
+
+  .radar-card.low .shape{
+    clip-path:polygon(50% 28%, 68.07% 44.13%, 62.34% 66.99%, 35.31% 70.23%, 31.93% 44.13%);
+    background:linear-gradient(180deg, rgba(248,113,113,.28), rgba(248,113,113,.07));
+  }
+
+  .dot{
+    position:absolute;
+    width:8px;height:8px;
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    background:var(--teal);
+    box-shadow:0 0 0 2px rgba(6,10,18,.9), 0 0 10px rgba(45,212,191,.7);
+  }
+
+  .radar-card.mid .dot{background:var(--amber);box-shadow:0 0 0 2px rgba(6,10,18,.9), 0 0 10px rgba(251,191,36,.6);}
+  .radar-card.low .dot{background:var(--red);box-shadow:0 0 0 2px rgba(6,10,18,.9), 0 0 10px rgba(248,113,113,.6);}
+
+  .lbl{
+    position:absolute;
+    font-size:10.5px;
+    color:var(--muted);
+    letter-spacing:.02em;
+    white-space:nowrap;
+  }
+
+  .lbl.l1{top:0;left:50%;transform:translateX(-50%);}
+  .lbl.l2{top:34%;right:0;}
+  .lbl.l3{bottom:4px;right:4%;}
+  .lbl.l4{bottom:4px;left:4%;}
+  .lbl.l5{top:34%;left:0;}
+
+  .radar-foot{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    border-top:1px solid var(--line);
+    padding-top:10px;
+    margin-top:6px;
+    font-size:11px;
+    color:var(--muted);
+  }
+
+  .radar-foot b{color:#d5e1ee;font-weight:600;}
+
+  .axis-note{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:11.5px;
+    text-align:center;
+  }
+
+  /* ---------- compare ---------- */
+
+  .table-scroll{
+    overflow-x:auto;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:rgba(10,17,29,.6);
+  }
+
+  .main-table{
+    width:100%;
+    min-width:760px;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+
+  .main-table th,
+  .main-table td{
+    padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    text-align:left;
+    white-space:nowrap;
+  }
+
+  .main-table th{
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.06em;
+    font-weight:500;
+    background:rgba(148,163,184,.035);
+  }
+
+  .main-table tr:last-child td{border-bottom:0;}
+
+  .main-table td.v{
+    font-family:"SF Mono",Consolas,monospace;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .main-table tr.first td{background:rgba(45,212,191,.045);}
+  .main-table tr.first td:first-child{box-shadow:inset 3px 0 0 var(--teal);}
+
+  .main-table td.total{
+    font-weight:700;
+    font-size:15px;
+  }
+
+  .compare-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,.82fr);
+    gap:14px;
+    margin-top:14px;
+  }
+
+  .dim-row{
+    display:grid;
+    grid-template-columns:78px minmax(0,1fr);
+    gap:12px;
+    align-items:start;
+    padding:10px 0;
+    border-bottom:1px dashed rgba(148,163,184,.12);
+  }
+
+  .dim-row:last-child{border-bottom:0;}
+
+  .dim-row .dim{font-size:12px;color:#d5e1ee;padding-top:2px;}
+
+  .bars{display:grid;gap:5px;}
+
+  .mini{
+    display:grid;
+    grid-template-columns:22px minmax(0,1fr) 32px;
+    gap:8px;
+    align-items:center;
+    font-size:11px;
+    color:var(--muted);
+  }
+
+  .mini .track{
+    height:6px;
+    border-radius:999px;
+    background:rgba(148,163,184,.10);
+    overflow:hidden;
+  }
+
+  .mini .track i{
+    display:block;
+    height:100%;
+    width:calc(var(--v) * 20%);
+    border-radius:999px;
+    background:var(--c);
+  }
+
+  .mini .num{
+    text-align:right;
+    font-family:"SF Mono",Consolas,monospace;
+    color:#cbd8e7;
+  }
+
+  .insight{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:rgba(10,17,29,.6);
+    padding:18px;
+  }
+
+  .insight h4{margin:0 0 10px;font-size:13px;letter-spacing:.05em;}
+  .insight p{margin:0 0 10px;color:var(--muted);font-size:12.5px;}
+  .insight p:last-child{margin-bottom:0;}
+  .insight strong{color:#e4edf7;font-weight:600;}
+
+  /* ---------- decision ---------- */
+
+  .decision-grid{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    gap:14px;
+  }
+
+  .decision{
+    position:relative;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    background:linear-gradient(170deg, rgba(16,28,47,.88), rgba(8,13,22,.92));
+    padding:20px;
+  }
+
+  .decision .top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:8px;
+  }
+
+  .decision h3{margin:0;font-size:16px;}
+
+  .decision .score{
+    font-family:"SF Mono",Consolas,monospace;
+    font-size:26px;
+    line-height:1;
+    letter-spacing:-.03em;
+  }
+
+  .decision .verdict{
+    font-size:12px;
+    letter-spacing:.08em;
+    margin-bottom:10px;
+  }
+
+  .decision ul{
+    margin:0;
+    padding:0 0 0 16px;
+    color:var(--muted);
+    font-size:12.5px;
+  }
+
+  .decision li{margin-bottom:5px;}
+  .decision li::marker{color:var(--line-strong);}
+
+  .decision.rec{border-color:rgba(52,211,153,.32);}
+  .decision.rec .score{color:var(--green);}
+  .decision.rec .verdict{color:var(--green);}
+
+  .decision.hold{border-color:rgba(251,191,36,.28);}
+  .decision.hold .score{color:var(--amber);}
+  .decision.hold .verdict{color:var(--amber);}
+
+  .decision.out{border-color:rgba(248,113,113,.28);}
+  .decision.out .score{color:var(--red);}
+  .decision.out .verdict{color:var(--red);}
+
+  .final{
+    margin-top:14px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    border:1px solid rgba(45,212,191,.26);
+    border-radius:var(--radius);
+    background:
+      radial-gradient(600px 180px at 0% 0%, rgba(45,212,191,.12), transparent 60%),
+      rgba(10,17,29,.7);
+    padding:18px 20px;
+  }
+
+  .final .t{font-size:14px;color:#d5e1ee;}
+  .final .t b{color:var(--teal);}
+
+  .final .path{
+    font-family:"SF Mono",Consolas,monospace;
+    font-size:11.5px;
+    color:var(--muted);
+  }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    margin-top:56px;
+    border-top:1px solid var(--line);
+    padding:26px 0 40px;
+    color:var(--muted);
+    font-size:12px;
+  }
+
+  footer .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:space-between;
+  }
+
+  footer b{color:#cbd8e7;font-weight:600;}
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width: 960px){
+    .profile-grid,
+    .score-grid,
+    .compare-grid{grid-template-columns:1fr;}
+    .radar-grid{grid-template-columns:repeat(2, minmax(0,1fr));}
+    .decision-grid{grid-template-columns:1fr;}
+    .layers{grid-template-columns:repeat(2, minmax(0,1fr));}
+  }
+
+  @media (max-width: 680px){
+    .kpis{grid-template-columns:repeat(2, minmax(0,1fr));}
+    .radar-grid{grid-template-columns:1fr;}
+    .duty-list,
+    .cap-grid{grid-template-columns:1fr;}
+    .facts{grid-template-columns:repeat(3, minmax(0,1fr));}
+    .radar-wrap{min-height:290px;padding:24px 34px;}
+    .weight-row{grid-template-columns:84px minmax(0,1fr) 40px;}
+    section{padding-top:44px;}
+  }
+
+  @media print{
+    :root{
+      --bg:#fff;
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#d1d5db;
+      --line-strong:#9ca3af;
+    }
+    body{background:#fff;color:#111827;}
+    .nav{display:none;}
+    .hero{padding-top:0;}
+    .hero::before{display:none;}
+    .panel,.radar-card,.decision,.role-card,.cap,.competency,.insight,.final,.table-scroll,.kpi{background:#fff;border-color:#d1d5db;box-shadow:none;}
+    .grid.g2,.grid.g4{background:#fff;}
+    .grid.g1{background:rgba(96,165,250,.10);}
+    .grid.g3{background:rgba(96,165,250,.075);}
+    .grid.g5{background:rgba(96,165,250,.055);}
+    .mini .track{background:#e5e7eb;}
+    section{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">
+      <span class="chip"><span class="dot"></span>HX-2026-BE-01 · 模拟批次</span>
+      <span class="chip">恒信数字科技有限公司</span>
+      <span class="chip">校招 · 后端开发工程师</span>
+      <span class="chip">四 Agent 协同产出</span>
+    </div>
+    <h1>把「面试」拆成一条<br><span class="accent">可追溯的评分流水线</span></h1>
+    <p class="lede">
+      初面官验材料，技术面官验深度，HR 面官验动机与协作，评估官只汇总不改分。
+      36 道题、5 个维度、3 位模拟候选人，从岗位画像一路走到录用建议。
+    </p>
+
+    <div class="kpis">
+      <div class="kpi"><b class="mono">36</b><span>题 · 四类题库</span></div>
+      <div class="kpi"><b class="mono">5</b><span>维 · 加权评分</span></div>
+      <div class="kpi"><b class="mono">90<span style="font-size:14px;color:var(--muted)">min</span></b><span>单场 · 9 轮流程</span></div>
+      <div class="kpi"><b class="mono">3</b><span>人 · 优秀 / 中等 / 不合格</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="页面导航">
+  <div class="wrap">
+    <a href="#profile">岗位画像</a>
+    <a href="#model">评分模型</a>
+    <a href="#radar">五维雷达</a>
+    <a href="#compare">三人对比</a>
+    <a href="#decision">录用结论</a>
+    <a href="#source">口径与来源</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- 岗位画像 -->
+  <section id="profile">
+    <div class="sec-head">
+      <h2><span class="num">01</span>岗位画像</h2>
+      <p>依据官方招聘简章 + 公司介绍推导，待用人部门确认</p>
+    </div>
+
+    <div class="profile-grid">
+      <div class="role-card">
+        <span class="tag">CAMPUS · BACKEND</span>
+        <h3>后端开发工程师（校招）</h3>
+        <p class="where">研发中心 · 后端开发部 · 武汉江夏数字产业园</p>
+        <p class="one">把 RAG 知识库、Agent 调度与政企业务需求，落成可部署、可审计、可维护的后端服务。</p>
+        <div class="facts">
+          <div><span>晋升通道</span><b>技术线 · 双通道</b></div>
+          <div><span>交付形态</span><b>私有化 / 内网</b></div>
+          <div><span>工作节奏</span><b>项目制 · 忙闲交替</b></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>岗位职责</h3>
+        <p class="sub">六个方向，覆盖「开发—集成—交付—质量」</p>
+        <ul class="duty-list">
+          <li><b>01</b>知识库后端服务：文档接入、解析编排、切片入库、检索与会话</li>
+          <li><b>02</b>Agent 与模型对接：工具调用网关、任务队列、超时重试与可观测</li>
+          <li><b>03</b>政企业务系统：进销存、生产管理、CRM、园区管理接口与权限</li>
+          <li><b>04</b>数据与接口设计：表结构、索引、REST 契约、接口文档</li>
+          <li><b>05</b>私有化交付：离线部署、数据迁移、升级回滚、现场排障</li>
+          <li><b>06</b>质量与协作：单测、代码评审、组件沉淀、排障手册</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap must">
+        <h4>必备能力 · MUST HAVE</h4>
+        <ul>
+          <li>一门主力语言（Java / Go / Python / Node.js），能写清晰分层代码</li>
+          <li>数据库基本功：SQL、索引、事务、隔离级别、慢查询</li>
+          <li>HTTP / REST 契约：状态码、鉴权、分页、幂等、超时</li>
+          <li>Git、Linux、Docker：能起本地依赖、看日志、排查环境</li>
+          <li>测试与排障：会写单测，能按日志 / 指标定位问题</li>
+        </ul>
+      </div>
+      <div class="cap plus">
+        <h4>加分能力 · NICE TO HAVE</h4>
+        <ul>
+          <li>RAG / 向量检索：Milvus、pgvector、FAISS、ES 向量检索</li>
+          <li>大模型应用：API 调用、工具调用、流式输出、限流与降级</li>
+          <li>消息队列：Kafka / RabbitMQ / RocketMQ，懂削峰与幂等</li>
+          <li>私有化部署与安全：离线镜像、权限分级、审计、加密</li>
+          <li>低代码 / 可观测：表单流程引擎、Prometheus、ELK</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="competency">
+      <h3>胜任力模型 · 四层十二项</h3>
+      <p class="sub">每一层都能落到题目与评分锚点，不做「感觉不错」的判断</p>
+      <div class="layers">
+        <div class="layer"><b>专业硬技能</b><span>语言与基础 · 数据与存储 · 接口与集成 · 检索与 AI 应用</span></div>
+        <div class="layer"><b>工程交付</b><span>编码质量 · 测试与排障 · 部署与安全 · 交付意识</span></div>
+        <div class="layer"><b>认知与潜力</b><span>学习速度 · 复盘能力</span></div>
+        <div class="layer"><b>动机与适配</b><span>沟通表达 · 文化与稳定</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 评分模型 -->
+  <section id="model">
+    <div class="sec-head">
+      <h2><span class="num">02</span>评分模型</h2>
+      <p>1–5 分制 · 五维加权 · 百分制换算</p>
+    </div>
+
+    <div class="score-grid">
+      <div class="panel">
+        <h3>五维权重</h3>
+        <p class="sub">技术深度 + 工程能力合计 50%，学习潜力单列 20%</p>
+
+        <div class="weight-row">
+          <span class="name">技术深度</span>
+          <span class="bar"><i style="width:25%"></i></span>
+          <span class="pct">25%</span>
+        </div>
+        <div class="weight-row">
+          <span class="name">工程能力</span>
+          <span class="bar"><i style="width:25%"></i></span>
+          <span class="pct">25%</span>
+        </div>
+        <div class="weight-row">
+          <span class="name">沟通表达</span>
+          <span class="bar"><i style="width:15%"></i></span>
+          <span class="pct">15%</span>
+        </div>
+        <div class="weight-row">
+          <span class="name">学习潜力</span>
+          <span class="bar"><i style="width:20%"></i></span>
+          <span class="pct">20%</span>
+        </div>
+        <div class="weight-row">
+          <span class="name">文化匹配</span>
+          <span class="bar"><i style="width:15%"></i></span>
+          <span class="pct">15%</span>
+        </div>
+
+        <div class="formula mono">
+          总分 = (技术×0.25 + 工程×0.25 + 沟通×0.15 + 学习×0.20 + 文化×0.15) × 20
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>等级与建议</h3>
+        <p class="sub">分数只给建议，不替代用人部门审批</p>
+        <table class="grade-table">
+          <thead>
+            <tr><th>总分</th><th>等级</th><th>建议</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">90.0–100</td><td>A</td><td><span class="badge ok">推荐（优先）</span></td></tr>
+            <tr><td class="mono">85.0–89.9</td><td>A-</td><td><span class="badge ok">推荐</span></td></tr>
+            <tr><td class="mono">80.0–84.9</td><td>B+</td><td><span class="badge ok">推荐</span></td></tr>
+            <tr><td class="mono">70.0–79.9</td><td>B</td><td><span class="badge wait">待定</span></td></tr>
+            <tr><td class="mono">60.0–69.9</td><td>C</td><td><span class="badge wait">待定（补测）</span></td></tr>
+            <tr><td class="mono">&lt; 60</td><td>D</td><td><span class="badge no">淘汰</span></td></tr>
+          </tbody>
+        </table>
+        <p class="sub" style="margin-top:12px;margin-bottom:0">
+          硬线：技术深度或工程能力低于 2.5 → 不推荐进入后端岗；任一维度 ≤1.5 → 最高只能待定。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 雷达 -->
+  <section id="radar">
+    <div class="sec-head">
+      <h2><span class="num">03</span>五维雷达</h2>
+      <p>CSS 绘制 · 5 = 超出预期 · 3 = 校招合格线 · 1 = 不合格</p>
+    </div>
+
+    <div class="radar-grid">
+
+      <!-- 陈亦然 -->
+      <article class="radar-card lead">
+        <div class="radar-head">
+          <div>
+            <h3>陈亦然</h3>
+            <div class="school">华中科技大学 · 软件工程</div>
+          </div>
+          <div class="radar-score"><b>89.2</b><span>A- · 推荐</span></div>
+        </div>
+        <div class="radar-wrap">
+          <div class="radar" role="img" aria-label="陈亦然五维雷达：技术4.6、工程4.4、沟通4.3、学习4.6、文化4.3">
+            <div class="grid g1"></div>
+            <div class="grid g2"></div>
+            <div class="grid g3"></div>
+            <div class="grid g4"></div>
+            <div class="grid g5"></div>
+            <div class="axis a1"></div>
+            <div class="axis a2"></div>
+            <div class="axis a3"></div>
+            <div class="axis a4"></div>
+            <div class="axis a5"></div>
+            <div class="shape"></div>
+            <div class="dot" style="left:50%;top:4%"></div>
+            <div class="dot" style="left:91.84%;top:36.4%"></div>
+            <div class="dot" style="left:75.28%;top:84.99%"></div>
+            <div class="dot" style="left:22.37%;top:88.02%"></div>
+            <div class="dot" style="left:9.11%;top:36.71%"></div>
+          </div>
+          <span class="lbl l1">技术深度</span>
+          <span class="lbl l2">工程能力</span>
+          <span class="lbl l3">沟通表达</span>
+          <span class="lbl l4">学习潜力</span>
+          <span class="lbl l5">文化匹配</span>
+        </div>
+        <div class="radar-foot">
+          <span>实习项目真实</span>
+          <span>学习潜力 <b>4.6</b></span>
+        </div>
+      </article>
+
+      <!-- 周子航 -->
+      <article class="radar-card mid">
+        <div class="radar-head">
+          <div>
+            <h3>周子航</h3>
+            <div class="school">武汉理工大学 · 计算机</div>
+          </div>
+          <div class="radar-score"><b>70.5</b><span>B · 待定</span></div>
+        </div>
+        <div class="radar-wrap">
+          <div class="radar" role="img" aria-label="周子航五维雷达：技术3.4、工程3.2、沟通3.7、学习3.9、文化3.6">
+            <div class="grid g1"></div>
+            <div class="grid g2"></div>
+            <div class="grid g3"></div>
+            <div class="grid g4"></div>
+            <div class="grid g5"></div>
+            <div class="axis a1"></div>
+            <div class="axis a2"></div>
+            <div class="axis a3"></div>
+            <div class="axis a4"></div>
+            <div class="axis a5"></div>
+            <div class="shape"></div>
+            <div class="dot" style="left:50%;top:16%"></div>
+            <div class="dot" style="left:80.43%;top:40.11%"></div>
+            <div class="dot" style="left:71.75%;top:79.93%"></div>
+            <div class="dot" style="left:27.08%;top:81.55%"></div>
+            <div class="dot" style="left:15.76%;top:38.88%"></div>
+          </div>
+          <span class="lbl l1">技术深度</span>
+          <span class="lbl l2">工程能力</span>
+          <span class="lbl l3">沟通表达</span>
+          <span class="lbl l4">学习潜力</span>
+          <span class="lbl l5">文化匹配</span>
+        </div>
+        <div class="radar-foot">
+          <span>课程项目真实</span>
+          <span>潜力 <b>3.9</b> &gt; 技术 <b>3.4</b></span>
+        </div>
+      </article>
+
+      <!-- 李文博 -->
+      <article class="radar-card low">
+        <div class="radar-head">
+          <div>
+            <h3>李文博</h3>
+            <div class="school">某民办本科 · 信息管理</div>
+          </div>
+          <div class="radar-score"><b>37.7</b><span>D · 淘汰</span></div>
+        </div>
+        <div class="radar-wrap">
+          <div class="radar" role="img" aria-label="李文博五维雷达：技术2.0、工程2.0、沟通1.8、学习1.8、文化1.7">
+            <div class="grid g1"></div>
+            <div class="grid g2"></div>
+            <div class="grid g3"></div>
+            <div class="grid g4"></div>
+            <div class="grid g5"></div>
+            <div class="axis a1"></div>
+            <div class="axis a2"></div>
+            <div class="axis a3"></div>
+            <div class="axis a4"></div>
+            <div class="axis a5"></div>
+            <div class="shape"></div>
+            <div class="dot" style="left:50%;top:28%"></div>
+            <div class="dot" style="left:68.07%;top:44.13%"></div>
+            <div class="dot" style="left:62.34%;top:66.99%"></div>
+            <div class="dot" style="left:35.31%;top:70.23%"></div>
+            <div class="dot" style="left:31.93%;top:44.13%"></div>
+          </div>
+          <span class="lbl l1">技术深度</span>
+          <span class="lbl l2">工程能力</span>
+          <span class="lbl l3">沟通表达</span>
+          <span class="lbl l4">学习潜力</span>
+          <span class="lbl l5">文化匹配</span>
+        </div>
+        <div class="radar-foot">
+          <span>五维全部 ≤ 2.0</span>
+          <span>技术/工程低于 <b>2.5</b></span>
+        </div>
+      </article>
+
+    </div>
+    <p class="axis-note">雷达面积不代表总分；总分以 `03-评分表.md` 的加权公式为准，雷达只用于看形状与短板。</p>
+  </section>
+
+  <!-- 对比 -->
+  <section id="compare">
+    <div class="sec-head">
+      <h2><span class="num">04</span>三人对比</h2>
+      <p>同题、同锚点、独立打分，评估官只做留痕校准</p>
+    </div>
+
+    <div class="table-scroll">
+      <table class="main-table">
+        <thead>
+          <tr>
+            <th>候选人</th>
+            <th>技术深度</th>
+            <th>工程能力</th>
+            <th>沟通表达</th>
+            <th>学习潜力</th>
+            <th>文化匹配</th>
+            <th>总分</th>
+            <th>等级</th>
+            <th>建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="first">
+            <td><b>陈亦然</b></td>
+            <td class="v">4.6</td>
+            <td class="v">4.4</td>
+            <td class="v">4.3</td>
+            <td class="v">4.6</td>
+            <td class="v">4.3</td>
+            <td class="v total" style="color:var(--teal)">89.2</td>
+            <td><span class="badge ok">A-</span></td>
+            <td><span class="badge ok">推荐</span></td>
+          </tr>
+          <tr>
+            <td><b>周子航</b></td>
+            <td class="v">3.4</td>
+            <td class="v">3.2</td>
+            <td class="v">3.7</td>
+            <td class="v">3.9</td>
+            <td class="v">3.6</td>
+            <td class="v total" style="color:var(--amber)">70.5</td>
+            <td><span class="badge wait">B</span></td>
+            <td><span class="badge wait">待定</span></td>
+          </tr>
+          <tr>
+            <td><b>李文博</b></td>
+            <td class="v">2.0</td>
+            <td class="v">2.0</td>
+            <td class="v">1.8</td>
+            <td class="v">1.8</td>
+            <td class="v">1.7</td>
+            <td class="v total" style="color:var(--red)">37.7</td>
+            <td><span class="badge no">D</span></td>
+            <td><span class="badge no">淘汰</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="compare-grid">
+      <div class="panel">
+        <h3>维度条形对比</h3>
+        <p class="sub">每条满分为 5.0，条长 = 得分 / 5</p>
+
+        <div class="dim-row">
+          <span class="dim">技术深度</span>
+          <div class="bars">
+            <div class="mini" style="--v:4.6;--c:var(--teal)"><span>陈</span><span class="track"><i></i></span><span class="num">4.6</span></div>
+            <div class="mini" style="--v:3.4;--c:var(--amber)"><span>周</span><span class="track"><i></i></span><span class="num">3.4</span></div>
+            <div class="mini" style="--v:2.0;--c:var(--red)"><span>李</span><span class="track"><i></i></span><span class="num">2.0</span></div>
+          </div>
+        </div>
+
+        <div class="dim-row">
+          <span class="dim">工程能力</span>
+          <div class="bars">
+            <div class="mini" style="--v:4.4;--c:var(--teal)"><span>陈</span><span class="track"><i></i></span><span class="num">4.4</span></div>
+            <div class="mini" style="--v:3.2;--c:var(--amber)"><span>周</span><span class="track"><i></i></span><span class="num">3.2</span></div>
+            <div class="mini" style="--v:2.0;--c:var(--red)"><span>李</span><span class="track"><i></i></span><span class="num">2.0</span></div>
+          </div>
+        </div>
+
+        <div class="dim-row">
+          <span class="dim">沟通表达</span>
+          <div class="bars">
+            <div class="mini" style="--v:4.3;--c:var(--teal)"><span>陈</span><span class="track"><i></i></span><span class="num">4.3</span></div>
+            <div class="mini" style="--v:3.7;--c:var(--amber)"><span>周</span><span class="track"><i></i></span><span class="num">3.7</span></div>
+            <div class="mini" style="--v:1.8;--c:var(--red)"><span>李</span><span class="track"><i></i></span><span class="num">1.8</span></div>
+          </div>
+        </div>
+
+        <div class="dim-row">
+          <span class="dim">学习潜力</span>
+          <div class="bars">
+            <div class="mini" style="--v:4.6;--c:var(--teal)"><span>陈</span><span class="track"><i></i></span><span class="num">4.6</span></div>
+            <div class="mini" style="--v:3.9;--c:var(--amber)"><span>周</span><span class="track"><i></i></span><span class="num">3.9</span></div>
+            <div class="mini" style="--v:1.8;--c:var(--red)"><span>李</span><span class="track"><i></i></span><span class="num">1.8</span></div>
+          </div>
+        </div>
+
+        <div class="dim-row">
+          <span class="dim">文化匹配</span>
+          <div class="bars">
+            <div class="mini" style="--v:4.3;--c:var(--teal)"><span>陈</span><span class="track"><i></i></span><span class="num">4.3</span></div>
+            <div class="mini" style="--v:3.6;--c:var(--amber)"><span>周</span><span class="track"><i></i></span><span class="num">3.6</span></div>
+            <div class="mini" style="--v:1.7;--c:var(--red)"><span>李</span><span class="track"><i></i></span><span class="num">1.7</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight">
+        <h4>怎么读这三张图</h4>
+        <p><strong>陈亦然是「T 型」：</strong>技术深度与学习潜力双高，工程能力低 0.2 属交付流程项，可在 1 个月内补齐。</p>
+        <p><strong>周子航是「潜力型」：</strong>学习 3.9 高于技术 3.4、工程 3.2，说明教得会，但当前不能独立兜底交付。</p>
+        <p><strong>李文博是「全面不达标」：</strong>五维全部 ≤2.0，且技术/工程低于 2.5 硬线，不是单点短板。</p>
+        <p><strong>共性弱项：</strong>三人对私有化的备份恢复、回滚演练、审计留存都偏弱，建议设为入职必修。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 结论 -->
+  <section id="decision">
+    <div class="sec-head">
+      <h2><span class="num">05</span>录用结论</h2>
+      <p>建议不是决定；最终由用人部门与 HR 按制度审批</p>
+    </div>
+
+    <div class="decision-grid">
+      <article class="decision rec">
+        <div class="top"><h3>陈亦然</h3><span class="score mono">89.2</span></div>
+        <div class="verdict">推荐 · A-</div>
+        <ul>
+          <li>RAG 链路、检索排查、接口契约能讲到参数与取舍</li>
+          <li>真实入库流水线：2 万份文档、幂等、死信、P95 380ms</li>
+          <li>追问能迁移，自建 120 条评测集</li>
+          <li>风险：项目数据待背调；备份演练只覆盖元数据库</li>
+        </ul>
+      </article>
+
+      <article class="decision hold">
+        <div class="top"><h3>周子航</h3><span class="score mono">70.5</span></div>
+        <div class="verdict">待定 · B</div>
+        <ul>
+          <li>项目真实，乐观锁解决超卖能讲清</li>
+          <li>学习潜力 3.9：被提示后能提出评测集思路</li>
+          <li>硬缺口：服务端幂等、超时预算、监控拆分、权限审计</li>
+          <li>补测 T02 / T06 / 工程实践，三项 ≥3.5 才转推荐</li>
+        </ul>
+      </article>
+
+      <article class="decision out">
+        <div class="top"><h3>李文博</h3><span class="score mono">37.7</span></div>
+        <div class="verdict">淘汰 · D</div>
+        <ul>
+          <li>技术 2.0 / 工程 2.0，低于岗位硬线 2.5</li>
+          <li>RAG 链路顺序错误，无法说明测试与部署</li>
+          <li>项目真实性存疑：无法解释简历所写实现</li>
+          <li>动机短期、遇事推责，与交付文化冲突</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="final">
+      <div class="t">
+        批次建议：<b>录用 1 人（陈亦然）</b>，保留 1 名备选（周子航，补测通过后生效），淘汰 1 人（李文博）。
+        若陈亦然放弃 offer，启动周子航补测；补测未过则本批次不补录，不降低标准。
+      </div>
+      <div class="path">docs/05-评估报告.md · HX-2026-BE-01</div>
+    </div>
+  </section>
+
+  <!-- 来源 -->
+  <section id="source">
+    <div class="sec-head">
+      <h2><span class="num">06</span>口径与来源</h2>
+      <p>每个结论都能回到题目、分数与原文</p>
+    </div>
+
+    <div class="profile-grid">
+      <div class="panel">
+        <h3>文件与 Agent 对应</h3>
+        <p class="sub">四角色、八份产出，单线程交接</p>
+        <table class="grade-table">
+          <thead>
+            <tr><th>文件</th><th>主笔</th><th>作用</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">00-团队分工</td><td>初面官</td><td>职责 / 交接物 / 异常</td></tr>
+            <tr><td class="mono">01-岗位画像</td><td>初面官</td><td>职责 / 能力 / 胜任力</td></tr>
+            <tr><td class="mono">02-面试题库</td><td>技术 + HR 面官</td><td>36 题 / 锚点 / 来源</td></tr>
+            <tr><td class="mono">03-评分表</td><td>评估官</td><td>权重 / 等级 / 换算</td></tr>
+            <tr><td class="mono">04-模拟记录</td><td>三名面试官</td><td>9 轮 / 逐题分</td></tr>
+            <tr><td class="mono">05-评估报告</td><td>评估官</td><td>汇总 / 建议 / 校准</td></tr>
+            <tr><td class="mono">index.html</td><td>评估官</td><td>可视化看板</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <h3>知识库映射</h3>
+        <p class="sub">36 题中 18 题（50%）来自知识库或由其转译</p>
+        <table class="grade-table">
+          <thead>
+            <tr><th>来源</th><th>落点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>公司介绍</td><td class="mono">01 · H04 · P08</td></tr>
+            <tr><td>官方招聘简章</td><td class="mono">01 · H04</td></tr>
+            <tr><td>HR 通用题库</td><td class="mono">H01 / H02 / B01 / B02 / B06 / H07</td></tr>
+            <tr><td>标准化岗位题库</td><td class="mono">T04–T09 / T13 / P03 / P08 / P09 / B07</td></tr>
+          </tbody>
+        </table>
+        <p class="sub" style="margin-top:12px;margin-bottom:0">
+          招聘简章未单列后端岗，岗位画像依据公司技术底座推导，正式启用前需用人部门确认。
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <b>恒信数字科技 · 校招后端面试看板</b><br>
+      零依赖 HTML + CSS · 模拟批次 HX-2026-BE-01 · 2026-11-03
+    </div>
+    <div>
+      数据口径：<span class="mono">03-评分表.md</span><br>
+      候选人均为模拟人物，不对应真实个人
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
